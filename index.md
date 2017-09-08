@@ -32,8 +32,10 @@ XDA Developers Thread : [**[Magisk] Magisk Module Uninstaller Template**](https:
 
 ## Notes ##  
   
-Kindly Change what is requried in "config.sh", ie "MODID" & "print_modname()".  
-The "config.sh" from Here can also be Copied/Replaced over by "config.sh" from your **Magisk Module Installer**.[ No Problem Doing This ]  
+Kindly Change what is required in "config.sh" file , ThatIs "MODID" & "print_modname()".  
+Also If Needed add Script in Function "script_before_uninstall()" & "script_after_uninstall()" in "config.sh" file .  
+  
+And Also Edit this README file as per the Needs , But somewhere in a corner Kindly Credit me for my Work , It's Highly Appreciated .  
   
 I have **Copied** the Code from "magisk-module-template" ZIP by **topjohnwu**.  
 I have **Edited** some part of the Code to make it work for All General Magisk Module.  
@@ -45,8 +47,8 @@ You might require to make changes to "update-binary" if you did some changes to 
 #### Thing's that are Removed ####  
   
 1. From **update-binary** File :  
-    1. Funtion : `grep_prop()` , `set_perm()` , `set_perm_recursive()` , `request_size_check()` .  
-    2. Variable : `INSTALLER` , `API` , `ABI` , `ABI2` , `ABILONG` , `ARCH` , `IS64BIT` .  
+    1. Funtion : Un-Necessary Function's .  
+    2. Variable : Un-Necessary Variable's .  
 2. From **config.sh** File :  
     1. Funtion : `set_permissions()` .  
     2. Variable : `AUTOMOUNT` , `PROPFILE` , `POSTFSDATA` , `LATESTARTSERVICE` , `REPLACE` .  
@@ -62,11 +64,15 @@ You might require to make changes to "update-binary" if you did some changes to 
   
 Thanks **topjohnwu** for Magisk & for the code in "magisk-module-template" , could not have done without it.  
   
+Kindly Give me some Credits for my Work , It's Highly Appreciated .  
+And Also just Informing or mentioning me wherever it is used , will give me some satisfaction .  
+Thanking You for the Same.  
+  
 
 ----------
 
 ## Changelog ##  
-#### Close to Magisk Module Template v3 ! ####  
+    
 #### v0.0 ####  
 - Initialized.  
 
@@ -91,5 +97,28 @@ Thanks **topjohnwu** for Magisk & for the code in "magisk-module-template" , cou
 - Changed Most Function Variable's to Local Variable's .  
 - Modified Check for `IMG` in `/data` OR `/cache` .  
 - And Then , Called `image_check()` to Verify .  
+   
+#### v1.3 ####  
+- Updated to Magisk Module Template v4 ! .  
+- UnReleased Version .  
+   
+#### v1.4 ####  
+- Updated `README` .  
+- Updated `update-binary` .  
+- Removed all Un-Necessary Function's .  
+- Removed all Un-Necessary Variable's .  
+- ReNamed `INSTALLER` to `UNINSTALLER` .   
+- Added Function `script_before_uninstall()` & `script_after_uninstall()` .  
+- Close to Magisk Module Template v4 ! .  
+   
+#### v1.5 ####  
+- Updated `README` .  
+- Updated `update-binary` .  
+- Updated `config.sh` .  
+- Added Some CODE .  
+- Removed all Un-Necessary Function's .  
+- Removed all Un-Necessary Variable's .  
+- ReNamed Variable `INSTALLER` to `UNINSTALLER` .   
+- Close to Magisk Module Template v1400 ! .  
   
 .
