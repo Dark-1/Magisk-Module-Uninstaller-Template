@@ -122,5 +122,10 @@ Thanking You for the Same.
 - Removed All `Dummy` Function & Variable coz of below Bug & Thanks to `TheComputerGuy96` .  
 - Fixed a Major Bug where Script was Executing in TWRP 3.0.2-0 but didn't in TWRP 3.1.1-0 .  
 - Now the *ZIP* will Flash/Execute as Intended , Sorry that I realized it too late .  
+   
+#### v1.7 ####  
+- Updated `README` .  
+- Updated `update-binary` .  
+- Fixed a Minor Bug .  
   
 .

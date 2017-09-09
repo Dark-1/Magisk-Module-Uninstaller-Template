@@ -141,7 +141,7 @@ is_mounted $MOUNTPATH || abort"! $IMG mount failed..."
 script_before_uninstall
 
 # UnInstall Magisk Module
-if is_mounted $MODPATH; then
+if [ -f $MODPATH ]; then
   rm -rf $MODPATH 2>/dev/null
   ui_print "- Removed Magisk Module : \"$MODID\" !"
 fi
