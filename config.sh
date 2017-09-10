@@ -3,7 +3,7 @@
 # Magisk
 # by topjohnwu
 # 
-# This is a Magisk Module Uninstaller Template ZIP for Developers
+# This is a Magisk Xposed Module Uninstaller ZIP
 # By Dark1
 # Profile :
 # http://forum.xda-developers.com/member.php?u=7292542
@@ -15,34 +15,72 @@
 # Defines
 ##########################################################################################
   
-# NOTE: This part has to be adjusted to fit your own needs
-# This should be the MODID in your "module.prop" of your Magisk Module
-MODID=template
+MODID=xposed
   
 ##########################################################################################
 # UnInstallation Message
 ##########################################################################################
   
-# Set what you want to show when Uninstalling your MOD
 print_modname()
 {
-  ui_print "************************************"
-  ui_print " Magisk Module Uninstaller Template "
-  ui_print "************************************"
+  ui_print "*******************************"
+  ui_print "   Magisk Xposed Uninstaller   "
+  ui_print "*******************************"
 }
   
 ##########################################################################################
-# UnInstallation Extra Function , to be Used Only IF Needed
+# UnInstallation Extra Function
 ##########################################################################################
   
 # Will be Executed Before UnInstallation
-script_before_uninstall()
+script_before_uninstall() 
 {
-  # Add script Here
+  # SDK [API] of Device
+  [ ! -f /system/build.prop ] && abort "! /system/build.prop could not be Found!"
+  api_level_arch_detect
+  ui_print "- Detected SDK is $API !"
+  ORGMODID=$MODID
+  MODID=${ORGMODID}_${API}
+  MODPATH=$MOUNTPATH/$MODID
+  ui_print "- Hence New MOD Name [MODID] is $MODID !"
+  CFOLD=false
 }
   
 # Will be Executed After UnInstallation
-script_after_uninstall()
+script_after_uninstall() 
 {
-  # Add script Here
+  # By any chance if there are more Xposed MOD then to be on safer side
+  
+  # If at "xposed"
+  config_xposed_uninstall ${ORGMODID} && CFOLD=true
+  
+  # If at "xposed_helper"
+  config_xposed_uninstall ${ORGMODID}_helper && CFOLD=true
+  
+  # Other Files If above Older Version's OR Helper Found
+  if $CFOLD; then
+    ui_print "- Removed Other OLD Files !"
+    rm -f /magisk/post-fs-data.d/mount_xposed 2>/dev/null
+    rm -f /magisk/service.d/z_unmount_xposed 2>/dev/null
+    rm -f /magisk/.core/post-fs-data.d/mount_xposed 2>/dev/null
+    rm -f /magisk/.core/service.d/z_unmount_xposed 2>/dev/null
+  fi
+  
+  # Goes from SDK 21 to 25
+  for SDKN in $(seq 21 25); do
+    config_xposed_uninstall ${ORGMODID}_${SDKN}
+  done
+}
+
+config_xposed_uninstall()
+{
+  local TEMPMODPATH="${MOUNTPATH}/$1"
+  if [ -d $TEMPMODPATH ]; then
+    ui_print "!! Detected An-Other at \"$1\" !"
+    rm -rf $TEMPMODPATH 2>/dev/null
+    ui_print "- Removed Magisk Module : \"$1\" !"
+    return 0
+  else
+    return 1
+  fi
 }
