@@ -127,5 +127,11 @@ Thanking You for the Same.
 - Updated `README` .  
 - Updated `update-binary` .  
 - Fixed a Minor Bug .  
+   
+#### v1.8 ####  
+- Updated `README` .  
+- Updated `update-binary` .  
+- Fixed a Critical Bug Fix .  
+- Added code to Display if Module is Not Installed .  
   
 .

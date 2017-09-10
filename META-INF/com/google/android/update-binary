@@ -72,8 +72,8 @@ ui_print() {
 
 require_new_magisk() {
   ui_print "***********************************"
-  ui_print "! $MAGISKBIN isn't setup properly!"
-  ui_print "! Please install Magisk v14.0+!"
+  ui_print "! $MAGISKBIN isn't setup properly !"
+  ui_print "!  Please install Magisk v14.0+   !"
   ui_print "***********************************"
   exit 1
 }
@@ -91,8 +91,8 @@ mount /cache 2>/dev/null
 . $MAGISKBIN/util_functions.sh
 
 # Check for Magisk
-[ ! -f $IMG ] && abort "! Magisk is not Installed!"
-$BOOTMODE && ! is_mounted /magisk && abort "! Magisk is not activated!"
+[ ! -f $IMG ] && abort "!!! Magisk is not Installed!"
+$BOOTMODE && ! is_mounted /magisk && abort "!!! Magisk is not activated!"
 
 # We need busybox/binaries to be setup
 $BOOTMODE && boot_actions || recovery_actions
@@ -103,7 +103,7 @@ $BOOTMODE && boot_actions || recovery_actions
 
 # Extract configurations file
 unzip -o "$ZIP" config.sh -d $UNINSTALLER 2>/dev/null
-[ ! -f $UNINSTALLER/config.sh ] && abort "! Unable to extract zip file!"
+[ ! -f $UNINSTALLER/config.sh ] && abort "!!! Unable to extract zip file!"
 
 # Load configurations
 . $UNINSTALLER/config.sh
@@ -124,9 +124,9 @@ ui_print "*******************************"
 ui_print " Powered by Magisk (@topjohnwu)"
 ui_print "*******************************"
 ui_print " "
-ui_print "!!!*************************!!!"
-ui_print "! Removing Magisk Module [MODID] : $MODID !"
-ui_print "!!!*************************!!!"
+ui_print "*******************************"
+ui_print " Removing Magisk Module [MODID] : $MODID !"
+ui_print "*******************************"
 ui_print " "
 
 ##########################################################################################
@@ -135,15 +135,17 @@ ui_print " "
 
 ui_print "- Mounting $IMG to $MOUNTPATH"
 MAGISKLOOP=`$MAGISKBIN/magisk --mountimg $IMG $MOUNTPATH`
-is_mounted $MOUNTPATH || abort"! $IMG mount failed..."
+is_mounted $MOUNTPATH || abort"!!! $IMG mount failed..."
 
 # Execute script_before_uninstall() Fn
 script_before_uninstall
 
 # UnInstall Magisk Module
-if [ -f $MODPATH ]; then
+if [ -d $MODPATH ]; then
   rm -rf $MODPATH 2>/dev/null
   ui_print "- Removed Magisk Module : \"$MODID\" !"
+else
+  ui_print "!! Magisk Module \"$MODID\" Not Installed !"
 fi
 
 # Execute script_after_uninstall() Fn
