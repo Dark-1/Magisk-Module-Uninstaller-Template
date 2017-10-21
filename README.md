@@ -133,5 +133,12 @@ Thanking You for the Same.
 - Updated `update-binary` .  
 - Fixed a Critical Bug Fix .  
 - Added code to Display if Module is Not Installed .  
+   
+#### v1.9 ####  
+- Updated `README` .  
+- Updated `update-binary` .  
+- Updated `config.sh` .  
+- Fixed a Critical Bug in `config.sh` .  
+- Minor changes in `update-binary` .  
   
 .

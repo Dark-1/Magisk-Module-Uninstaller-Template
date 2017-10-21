@@ -24,8 +24,7 @@ MODID=template
 ##########################################################################################
   
 # Set what you want to show when Uninstalling your MOD
-print_modname()
-{
+print_modname() {
   ui_print "************************************"
   ui_print " Magisk Module Uninstaller Template "
   ui_print "************************************"
@@ -36,13 +35,13 @@ print_modname()
 ##########################################################################################
   
 # Will be Executed Before UnInstallation
-script_before_uninstall()
-{
+script_before_uninstall() {
+  : # No Operation , To Prevent No Command Syntax Error .
   # Add script Here
 }
   
 # Will be Executed After UnInstallation
-script_after_uninstall()
-{
+script_after_uninstall() {
+  : # No Operation , To Prevent No Command Syntax Error .
   # Add script Here
 }
