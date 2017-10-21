@@ -132,7 +132,7 @@ Thanking You for the Same.
 - Updated `README` .  
 - Updated `update-binary` .  
 - Fixed a Critical Bug Fix .  
-- Added code to Display if Module is Not Installed .
+- Added code to Display if Module is Not Installed .  
    
 #### v1.9 ####  
 - Updated `README` .  
